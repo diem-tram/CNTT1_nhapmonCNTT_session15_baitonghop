@@ -1,0 +1,47 @@
+BÀI TỔNG HỢP 
+Phần 1. Thiết lập Hybrid Workflow
+1. Xử lý sự cố laptop hỏng ổ cứng
+Nếu nhóm đã thiết lập Hybrid Workflow đúng cách, tức là lưu bản làm việc trên máy tính và bật Auto Sync để tự động đồng bộ lên Cloud, thì sự cố hỏng ổ cứng không nhất thiết làm mất bản mới nhất. Khi các thay đổi đã đồng bộ hoàn tất, nhóm có thể mở bản lưu trên Cloud từ thiết bị khác để tiếp tục làm việc. Tuy nhiên, nếu laptop hỏng trước khi file kịp đồng bộ, máy đang ngoại tuyến hoặc biểu tượng đồng bộ báo lỗi, phần thay đổi mới nhất vẫn có thể bị mất. Vì vậy, cần kiểm tra trạng thái đồng bộ thay vì chỉ bật tính năng rồi mặc định rằng file đã được sao lưu.
+2. Ba bước thiết lập Auto Sync
+Bước 1: Đăng nhập tài khoản Cloud Workspace của nhóm trên máy tính và cài hoặc mở ứng dụng đồng bộ chính thức của dịch vụ đang sử dụng.
+Bước 2: Chọn thư mục dự án SmartCampus cần đồng bộ, bật Auto Sync và đặt thư mục này vào vùng được ứng dụng quản lý đồng bộ. Thống nhất để cả nhóm làm việc trên đúng thư mục dùng chung, tránh tạo nhiều bản rời rạc.
+Bước 3: Chờ đồng bộ lần đầu hoàn tất, kiểm tra biểu tượng hoặc trạng thái báo đã đồng bộ thành công, rồi thử mở file từ giao diện Cloud. Khi chỉnh sửa về sau, cần kiểm tra trạng thái đồng bộ nếu mạng chập chờn hoặc ứng dụng báo lỗi.
+3. Khôi phục hai trang bị xóa nhầm
+Mở file BaoCao_CuoiKy_SmartCampus.docx trên Cloud Workspace, vào mục Version History hoặc Lịch sử phiên bản, chọn phiên bản được lưu trước thời điểm xóa nhầm 2 trang và xem lại nội dung. Sau khi xác nhận đúng phiên bản, chọn Restore/Khôi phục. Nếu chỉ cần lấy lại hai trang mà không muốn làm mất các chỉnh sửa mới hơn, nên mở phiên bản cũ để sao chép riêng hai trang cần thiết sang bản hiện tại; chỉ khôi phục toàn bộ phiên bản khi đã kiểm tra các thay đổi khác.
+4. Những nội dung không nên đồng bộ
+Thư mục node_modules chứa rất nhiều file phụ thuộc được tạo hoặc tải về trong quá trình phát triển phần mềm. Đồng bộ hàng vạn file nhỏ có thể làm tăng thời gian đồng bộ, tạo nhiều thay đổi không cần thiết và tiêu tốn dung lượng. Cách xử lý phù hợp là loại thư mục này khỏi vùng đồng bộ hoặc đưa vào danh sách bỏ qua, rồi cài lại các phụ thuộc từ tệp khai báo khi cần.
+Các file phim 4K tải về để giải trí không thuộc tài nguyên cần thiết của đồ án. Đưa chúng vào thư mục dự án sẽ chiếm dung lượng Cloud và băng thông, làm chậm việc đồng bộ những file quan trọng. Nên chuyển chúng ra thư mục cá nhân ngoài vùng đồng bộ hoặc xóa nếu không còn cần dùng. Chỉ đồng bộ tài liệu và tài nguyên thật sự phục vụ dự án.
+Phần 2. Phân quyền chia sẻ an toàn
+Nguyên tắc chung là cấp quyền vừa đủ cho đúng người cần truy cập và dùng phạm vi Restricted khi có thể xác định người nhận cụ thể. Anyone with the link chỉ nên dùng khi tài liệu thực sự cần được phổ biến rộng và không chứa thông tin nhạy cảm.
+File	Mức quyền	Phạm vi chia sẻ	Giải thích
+BaoCao_CuoiKy_SmartCampus.docx gửi giảng viên	Viewer	Restricted	Giảng viên chỉ cần xem và chấm bài, không cần quyền sửa nội dung; chỉ tài khoản giảng viên được chỉ định mới truy cập được.
+Slide_BaoCao.pptx cho 5 thành viên	Editor	Restricted	Cả năm thành viên cần cùng chỉnh sửa trong thời gian gấp, nhưng quyền truy cập chỉ giới hạn ở đúng các tài khoản của nhóm.
+GopY_BanNhap.docx gửi anh khóa trên	Commenter	Restricted	Anh khóa trên có thể để lại nhận xét mà không sửa trực tiếp bản thảo; chỉ chia sẻ cho tài khoản của người được nhờ góp ý.
+ThongTin_CaNhan_NhomVien.xlsx	Viewer	Restricted	Bảng có CCCD và số điện thoại nên cần giới hạn người xem ở những người thực sự được phép xử lý thủ tục; không cấp quyền công khai hoặc rộng hơn nhu cầu.
+2. Quy tắc Cờ Đỏ Bảo mật
+Quy tắc Cờ Đỏ Bảo mật là xem mọi tài liệu có dữ liệu cá nhân, thông tin định danh hoặc thông tin nhạy cảm như một “cờ đỏ”: phải dừng lại kiểm tra nội dung, người nhận, phạm vi chia sẻ và mức quyền trước khi gửi. Với file chứa CCCD và số điện thoại, cần dùng Restricted, chỉ thêm đúng tài khoản được phép và rà soát lại danh sách người có quyền truy cập.
+Không được kết hợp Anyone with the link + Editor vì bất kỳ ai có được liên kết đều có thể mở và chỉnh sửa bảng nếu liên kết bị chuyển tiếp hoặc lộ ra ngoài. Điều này có thể dẫn đến lộ dữ liệu định danh, sửa hoặc xóa thông tin và khiến nhóm khó kiểm soát ai đã truy cập. Nguyên tắc phù hợp là giới hạn người nhận và chỉ cấp quyền tối thiểu cần thiết.
+3. Hai thiết lập trong cửa sổ Settings cho file trình chiếu
+Thứ nhất, tắt tùy chọn cho phép Editor thay đổi quyền truy cập và chia sẻ với người khác (nếu dịch vụ Cloud đang dùng có tùy chọn này). Việc này hạn chế thành viên tự ý mời người ngoài vào file.
+Thứ hai, giới hạn quyền tải xuống, in và sao chép đối với Viewer/Commenter nếu tùy chọn này có sẵn và phù hợp với nhu cầu làm việc. Thiết lập này không ngăn hoàn toàn việc chụp màn hình hoặc sao chép bằng cách khác, nhưng giúp giảm nguy cơ phát tán ngoài ý muốn. Vì nhóm đang cần chỉnh sửa, không nên bật giới hạn làm ảnh hưởng quyền làm việc của các Editor.
+Phần 3. Tổ chức giao tiếp nhóm chuẩn doanh nghiệp
+1. Ba vấn đề trong hội thoại hiện tại
+Thứ nhất, tin nhắn “có ai rảnh không” là kiểu No-Hello hoặc mở đầu thiếu ngữ cảnh. Người nhận chưa biết người gửi cần hỗ trợ việc gì, mất thêm lượt hỏi đáp mới xác định được yêu cầu.
+Thứ hai, tin nhắn nhắc deadline dùng @all lúc 23:47 tạo thông báo diện rộng vào giờ nghỉ. Đây là cách dùng mention thiếu chọn lọc, gây gián đoạn và không tôn trọng thời gian tập trung của thành viên.
+Thứ ba, nội dung công việc, lời chào và ảnh giải trí nằm lẫn trong cùng luồng chat, không phân luồng theo chủ đề. Điều này làm thông tin quan trọng dễ bị trôi, khó theo dõi tiến độ và khó tìm lại quyết định.
+2. Các Channel/Topic nên tạo
+#thong-bao: Dùng cho deadline, thay đổi kế hoạch, lịch họp và thông tin quan trọng; chỉ người phụ trách đăng thông báo chính thức khi cần.
+#tien-do-do-an: Cập nhật phần việc, người phụ trách, trạng thái hoàn thành, vướng mắc và đường dẫn đến tài liệu đang làm.
+#trao-doi-tai-lieu: Dùng để hỏi đáp, góp ý nội dung báo cáo và thảo luận các chỉnh sửa cụ thể; nên trả lời theo Thread để giữ các ý liên quan cùng một chỗ.
+#tam-su-giai-tri: Dành cho nội dung ngoài công việc để không làm loãng các kênh phục vụ deadline.
+3. Viết lại tin nhắn của Lan theo tư duy Asynchronous
+“Mọi người cho mình xin góp ý phần mở đầu của báo cáo SmartCampus nhé. Mình đang rà lại mục tiêu và phạm vi đề tài, nhưng chưa chắc đoạn nêu lý do chọn đề tài đã đủ rõ. Khi tiện, mọi người xem trang 2–3 trong file BaoCao_CuoiKy_SmartCampus.docx và góp ý giúp mình chỗ nào cần bổ sung hoặc viết lại. Nếu chưa xem được ngay thì cứ phản hồi khi có thời gian; mình sẽ tiếp tục chỉnh các mục còn lại trước.”
+4. Viết lại thông báo deadline và Schedule Send
+Thiết lập Schedule Send để tin nhắn được gửi lúc 08:00 sáng hôm sau, thay vì gửi lúc 23:47. Trước khi lên lịch, kiểm tra danh sách tiến độ và thay các tên mẫu dưới đây bằng đúng thành viên thực tế còn thiếu phần việc:
+“Chào buổi sáng Lan và Nam, theo bảng tiến độ hiện tại, phần tổng hợp nội dung của Lan và phần kiểm tra số liệu của Nam vẫn chưa được đánh dấu hoàn thành. Hai bạn cập nhật trạng thái và gửi bản hoàn chỉnh vào thư mục SmartCampus trước 10:00 sáng hôm nay nhé. Nếu có vướng mắc ảnh hưởng đến thời hạn, hãy trả lời ngay trong thread này và nêu rõ phần cần hỗ trợ để nhóm sắp xếp.”
+Lưu ý: chỉ tag đích danh những người thực sự còn thiếu phần việc sau khi kiểm tra bảng tiến độ; không giữ tên Lan và Nam nếu dữ liệu thực tế cho thấy người khác đang phụ trách.
+Phần 4. Thông báo tổng hợp trên #thong-bao
+“Cả nhóm cập nhật giúp mình: thư mục dự án SmartCampus đã được bật Auto Sync và mình đã kiểm tra trạng thái đồng bộ. File BaoCao_CuoiKy_SmartCampus.docx cũng đã được chia sẻ cho giảng viên ở quyền Viewer, phạm vi Restricted để thầy/cô xem và chấm mà không sửa trực tiếp được. Lan và Nam, vui lòng cập nhật phần còn thiếu theo bảng tiến độ và gửi bản hoàn chỉnh trước 10:00 sáng hôm nay; nếu có vướng mắc, phản hồi trong thread này để nhóm hỗ trợ. Mọi người tiếp tục làm việc trên thư mục Cloud dùng chung và kiểm tra trạng thái đồng bộ trước khi tắt máy nhé.”
+Trước khi đăng, cần thay “Lan và Nam” bằng đúng tên những người còn thiếu việc theo bảng tiến độ. Nếu Auto Sync hoặc quyền chia sẻ chưa được xác minh thực tế, hãy hoàn tất và kiểm tra các thao tác đó trước khi gửi thông báo.
+Kết luận
+Hybrid Workflow giúp nhóm làm việc trên máy cá nhân nhưng vẫn có bản đồng bộ trên Cloud; Version History hỗ trợ khôi phục khi xảy ra chỉnh sửa nhầm. Phân quyền cần dựa trên nhiệm vụ của người nhận và độ nhạy cảm của dữ liệu. Cuối cùng, việc chia kênh, dùng Thread, tag đúng người và gửi thông báo đúng thời điểm giúp nhóm giảm nhiễu, theo dõi trách nhiệm rõ ràng và hoàn thành báo cáo đúng hạn.
